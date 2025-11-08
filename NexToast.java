@@ -106,10 +106,13 @@ public class NexToast extends Toast {
         }
 
         int toastElevation = androidResources.getIdentifier("toast_elevation", "dimen", "android");
-        if (toastElevation != 0) layout.setElevation(androidResources.getDimension(toastElevation));
+        if (toastElevation != 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            layout.setElevation(androidResources.getDimension(toastElevation));
 
-        layoutParams.setMarginStart(dpValue16);
-        layoutParams.setMarginEnd(dpValue16);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            layoutParams.setMarginStart(dpValue16);
+            layoutParams.setMarginEnd(dpValue16);
+        }
         layout.setLayoutParams(layoutParams);
 
         TextView textView = new TextView(context);
