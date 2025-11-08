@@ -1,3 +1,5 @@
+package io.github.justlikecheese.nextoast;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -106,10 +108,10 @@ public class NexToast extends Toast {
         }
 
         int toastElevation = androidResources.getIdentifier("toast_elevation", "dimen", "android");
-        if (toastElevation != 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        if (toastElevation != 0 && Build.VERSION.SDK_INT >= 21)
             layout.setElevation(androidResources.getDimension(toastElevation));
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        if (Build.VERSION.SDK_INT >= 17) {
             layoutParams.setMarginStart(dpValue16);
             layoutParams.setMarginEnd(dpValue16);
         }
