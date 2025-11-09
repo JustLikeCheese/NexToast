@@ -4,8 +4,7 @@ plugins {
 
 android {
     namespace 'io.github.justlikecheese.nextoast.app'
-    //noinspection GradleDependency
-    compileSdk 28
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "io.github.justlikecheese.nextoast.app"
