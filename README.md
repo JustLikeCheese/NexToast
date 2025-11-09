@@ -4,6 +4,10 @@
   <a title="Chinese" href="./README.zh-CN.md">简体中文</a>
 </div>
 
+[![Maven Central Version](https://img.shields.io/maven-central/v/io.github.justlikecheese.nextoast/NexToast)](https://repo1.maven.org/maven2/io/github/justlikecheese/nextoast/NexToast/)
+[![GitHub Release](https://img.shields.io/github/v/release/JustLikeCheese/NexToast)](https://github.com/JustLikeCheese/NexToast/releases/latest)
+[![GitHub License](https://img.shields.io/github/license/JustLikeCheese/NexToast)](https://github.com/JustLikeCheese/NexToast/blob/main/LICENSE)
+
 # What's this?
 
 This is a simple library to bypass the icon and two-line text limitations added by Android 12 Toast.

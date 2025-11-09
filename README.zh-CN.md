@@ -4,6 +4,10 @@
   简体中文
 </div>
 
+[![GitHub License](https://img.shields.io/github/license/JustLikeCheese/NexToast)](https://github.com/JustLikeCheese/NexToast/blob/main/LICENSE)
+[![Maven Central Version](https://img.shields.io/maven-central/v/io.github.justlikecheese.nextoast/NexToast)](https://repo1.maven.org/maven2/io/github/justlikecheese/nextoast/NexToast/)
+[![GitHub Release](https://img.shields.io/github/v/release/JustLikeCheese/NexToast)](https://github.com/JustLikeCheese/NexToast/releases/latest)
+
 # NexToast
 
 NexToast 是一个简单的库用于移除于 Android 12 添加的图标和文本两行限制。
