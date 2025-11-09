@@ -77,11 +77,16 @@ public class NexToast extends Toast {
         this.message = view.findViewById(android.R.id.message);
     }
 
+    @Override
     public View getView() {
         if (view != null) {
             return view;
         }
         return super.getView();
+    }
+
+    public TextView getTextView() {
+        return message;
     }
 
     private static int dp2px(Context context, int dp) {

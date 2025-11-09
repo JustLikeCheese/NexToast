@@ -23,27 +23,39 @@ public class MainActivity extends Activity {
         Button btn2 = findViewById(R.id.btn2);
         Button btn3 = findViewById(R.id.btn3);
         Button btn4 = findViewById(R.id.btn4);
+        final String string1 = "Talk is cheap. Show me the code.\n-- Linus Torvalds";
+        final String string2 = "Hello, World!\n你好, 世界!\nहैलो वर्ल्ड!\nمرحبا بالعالم!\nこんにちは世界！\n안녕하세요, 세상아!\nПривет, мир!\nOlá, mundo!";
         btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                NexToast.makeText(MainActivity.this, "Talk is cheap. Show me the code.\n-- Linus Torvalds", NexToast.LENGTH_SHORT).show();
+                NexToast.makeText(MainActivity.this, string1, NexToast.LENGTH_SHORT).show();
+            }
+        });
+        btn1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                NexToast toast = new NexToast(MainActivity.this);
+                toast.setText("YOOOOOOOO~ YOU FOUND ME :)");
+                toast.show();
+                return true;
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NexToast.makeText(MainActivity.this, "Hello, World!\n你好, 世界!\nहैलो वर्ल्ड!\nمرحبا بالعالم!\nこんにちは世界！\n안녕하세요, 세상아!\nПривет, мир!\nOlá, mundo!", NexToast.LENGTH_SHORT).show();
+                NexToast.makeText(MainActivity.this, string2, NexToast.LENGTH_SHORT).show();
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Talk is cheap. Show me the code.\n-- Linus Torvalds", NexToast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, string1, NexToast.LENGTH_SHORT).show();
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Hello, World!\n你好, 世界!\nहैलो वर्ल्ड!\nمرحبا بالعالم!\nこんにちは世界！\n안녕하세요, 세상아!\nПривет, мир!\nOlá, mundo!", NexToast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, string2, NexToast.LENGTH_SHORT).show();
             }
         });
     }
