@@ -34,7 +34,7 @@ public class NexToast extends Toast {
         this(context, hasSystemLimit);
     }
 
-    public static Toast makeText(Context context, CharSequence text, int duration) {
+    public static NexToast makeText(Context context, CharSequence text, int duration) {
         return makeText(context, text, duration, hasSystemLimit);
     }
 
@@ -45,7 +45,7 @@ public class NexToast extends Toast {
         return toast;
     }
 
-    public static Toast makeText(Context context, int resId, int duration) {
+    public static NexToast makeText(Context context, int resId, int duration) {
         return makeText(context, resId, duration, hasSystemLimit);
     }
 
