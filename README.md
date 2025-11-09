@@ -1,20 +1,69 @@
+<div align="right">
+  Language:
+  English
+  <a title="Chinese" href="./README.zh-CN.md">简体中文</a>
+</div>
+
 # What's this?
 
 This is a simple library to bypass the icon and two-line text limitations added by Android 12 Toast.
 
 ## How to use?
 
-1. Move the NexToast.java file to your project.
-2. Change the package name if you like.
-3. Use NexToast like you would use Toast.
+### Gradle
 
-## Example
+```gradle
+dependencies {
+    implementation 'io.github.justlikecheese.nextoast:NexToast:1.1.0'
+}
+```
+
+### Manual
+
+1. Move the [NexToast.java](nextoast/src/main/java/io/github/justlikecheese/nextoast/NexToast.java) file to your project.
+2. Change the package name if you like.
+3. Use the NexToast like Toast.
+
+## Examples
+
+Use NexToast like Toast.
 
 ```java
 NexToast.makeText(this, "Hello World!", Toast.LENGTH_SHORT).show();
 ```
 
-![Preview](preview/image.png)
+## Screenshots
+
+<div style="overflow: hidden">
+<img src="preview/image1.png" alt="GeneralAppearance" width="40%" align="bottom" />
+<img src="preview/image2.png" alt="ProblemIndicator" width="40%" align="bottom" />
+</div>
+
+## Feature API
+
+NexToast has added the following extended useful methods.
+
+### TextView getTextView()
+
+Returns the TextView of the Toast.
+
+```java
+NexToast toast = NexToast.makeText(this, "Hello World!", Toast.LENGTH_SHORT);
+toast.getTextView().setTextColor(0xFF555555); // Change text color
+toast.show();
+```
+
+### NexToast makeText(Context context, int resId, int duration)
+
+Create NexToast with text from a resource.
+
+```java
+NexToast.makeText(this, R.string.hello_world, Toast.LENGTH_SHORT).show();
+```
+
+## Comtribution
+
+If you have any ideas or issues, you can create an issue or pull request.
 
 ## License
 
