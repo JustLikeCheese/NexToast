@@ -45,6 +45,17 @@ public class NexToast extends Toast {
         return toast;
     }
 
+    public static Toast makeText(Context context, int resId, int duration) {
+        return makeText(context, resId, duration, hasSystemLimit);
+    }
+
+    public static NexToast makeText(Context context, int resId, int duration, boolean bypass) {
+        NexToast toast = new NexToast(context, bypass);
+        toast.setText(resId);
+        toast.setDuration(duration);
+        return toast;
+    }
+
     @Override
     public void setText(int resId) {
         setText(context.getText(resId));
