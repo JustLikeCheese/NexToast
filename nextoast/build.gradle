@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
+    id "com.vanniktech.maven.publish" version "0.34.0"
 }
 
 android {
     namespace 'io.github.justlikecheese.nextoast'
-    compileSdk 36
+    compileSdkVersion 36
 
     defaultConfig {
     }
@@ -22,4 +23,36 @@ android {
 }
 
 dependencies {
+}
+
+mavenPublishing {
+    coordinates("io.github.justlikecheese.nextoast", "NexToast", "1.0.0")
+    publishToMavenCentral()
+    signAllPublications()
+
+    pom {
+        name = "NexToast"
+        description = "A toast library for Android"
+        inceptionYear = "2025"
+        url = "https://github.com/JustLikeCheese/NexToast/"
+        licenses {
+            license {
+                name = "WTFPL License"
+                url = "https://www.wtfpl.net/txt/copying/"
+                distribution = "https://www.wtfpl.net/txt/copying/"
+            }
+        }
+        developers {
+            developer {
+                id = "JustLikeCheese"
+                name = "JustLikeCheese"
+                url = "https://github.com/JustLikeCheese/"
+            }
+        }
+        scm {
+            url = "https://github.com/JustLikeCheese/NexToast/"
+            connection = "scm:git:git://github.com/JustLikeCheese/NexToast.git"
+            developerConnection = "scm:git:ssh://git@github.com/JustLikeCheese/NexToast.git"
+        }
+    }
 }
