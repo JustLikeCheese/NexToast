@@ -15,22 +15,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class NexToast extends Toast {
-    private final static boolean hasSystemLimit = Build.VERSION.SDK_INT >= 30;
-
+    public final static boolean hasSystemLimit = Build.VERSION.SDK_INT >= 30;
+    public final boolean hasLimit;
     private final Context context;
-    private final boolean hasLimit;
     private View view = null;
+    private TextView message = null;
 
     public NexToast(Context context, boolean hasLimit) {
         super(context);
         this.context = context;
         this.hasLimit = hasLimit;
         if (hasLimit) {
-            ViewGroup viewGroup = getSystemToastLayout(context);
-            TextView textView = viewGroup.findViewById(android.R.id.message);
-            textView.setMaxLines(Integer.MAX_VALUE);
-            this.setView(viewGroup);
-            getView();
+            this.setView(getDefaultToastLayout(context));
         }
     }
 
@@ -56,9 +52,8 @@ public class NexToast extends Toast {
 
     @Override
     public void setText(CharSequence text) {
-        if (hasLimit) {
-            TextView tv = view.findViewById(android.R.id.message);
-            tv.setText(text);
+        if (message != null) {
+            message.setText(text);
             return;
         }
         super.setText(text);
@@ -68,21 +63,27 @@ public class NexToast extends Toast {
     public void setView(View view) {
         super.setView(view);
         this.view = view;
+        this.message = view.findViewById(android.R.id.message);
     }
 
-    public static int dp2px(Context context, int dp) {
+    public View getView() {
+        if (view != null) {
+            return view;
+        }
+        return super.getView();
+    }
+
+    private static int dp2px(Context context, int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 
-    public static ViewGroup getSystemToastLayout(Context context) {
-        return getSystemToastLayout(context, null);
-    }
-
-    public static ViewGroup getSystemToastLayout(Context context, CharSequence message) {
+    private static ViewGroup getDefaultToastLayout(Context context) {
         Resources androidResources = Resources.getSystem();
         int layoutId = androidResources.getIdentifier("transient_notification", "layout", "android");
         ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(layoutId, null);
         if (view != null) {
+            TextView textView = view.findViewById(android.R.id.message);
+            textView.setMaxLines(Integer.MAX_VALUE);
             return view;
         }
         int dpValue16 = dp2px(context, 16);
@@ -124,11 +125,7 @@ public class NexToast extends Toast {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         ));
         textView.setEllipsize(TextUtils.TruncateAt.END);
-        textView.setMaxLines(2);
         textView.setPadding(0, dpValue12, 0, dpValue12);
-        if (message != null) {
-            textView.setText(message);
-        }
 
         int textAppearanceId = androidResources.getIdentifier("TextAppearance.Toast", "style", "android");
         if (textAppearanceId != 0) {
