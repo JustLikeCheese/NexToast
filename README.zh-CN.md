@@ -4,9 +4,9 @@
   简体中文
 </div>
 
-[![GitHub License](https://img.shields.io/github/license/JustLikeCheese/NexToast)](https://github.com/JustLikeCheese/NexToast/blob/main/LICENSE)
 [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.justlikecheese.nextoast/NexToast)](https://repo1.maven.org/maven2/io/github/justlikecheese/nextoast/NexToast/)
 [![GitHub Release](https://img.shields.io/github/v/release/JustLikeCheese/NexToast)](https://github.com/JustLikeCheese/NexToast/releases/latest)
+[![GitHub License](https://img.shields.io/github/license/JustLikeCheese/NexToast)](https://github.com/JustLikeCheese/NexToast/blob/main/LICENSE)
 
 # NexToast
 
