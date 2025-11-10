@@ -40,6 +40,7 @@ captures/
 *.iml
 .idea/workspace.xml
 .idea/tasks.xml
+.idea/gradle.xml
 .idea/assetWizardSettings.xml
 .idea/dictionaries
 .idea/libraries
@@ -50,7 +51,13 @@ captures/
 .idea/navEditor.xml
 .idea/compiler.xml
 .idea/misc.xml
+# More file
+.idea/AndroidProjectSystem.xml
+.idea/deviceManager.xml
+.idea/migrations.xml
+.idea/runConfigurations.xml
 .idea/deploymentTargetSelector.xml
+.idea/markdown.xml
 
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
