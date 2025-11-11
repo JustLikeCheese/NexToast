@@ -26,7 +26,7 @@ dependencies {
 }
 
 mavenPublishing {
-    coordinates("io.github.justlikecheese.nextoast", "NexToast", "1.1.0")
+    coordinates("io.github.justlikecheese.nextoast", "NexToast", "1.2.0")
     publishToMavenCentral()
     signAllPublications()
 
