@@ -81,13 +81,13 @@ public class TestActivity extends Activity {
         toast1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TestActivity.this, string1, NexToast.LENGTH_SHORT).show();
+                Toast.makeText(TestActivity.this, string1, Toast.LENGTH_SHORT).show();
             }
         });
         toast2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TestActivity.this, string2, NexToast.LENGTH_SHORT).show();
+                Toast.makeText(TestActivity.this, string2, Toast.LENGTH_SHORT).show();
             }
         });
     }

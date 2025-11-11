@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.InflateException;
@@ -67,7 +68,6 @@ public class NexToast {
      * @see #setDuration
      */
     public static final int LENGTH_LONG = 1;
-
     @SuppressLint("AnnotateVersionCheck")
     public final static boolean hasSystemLimit = Build.VERSION.SDK_INT >= 30;
     private final Context context;
@@ -354,36 +354,33 @@ public class NexToast {
     private final static Resources androidResources = Resources.getSystem();
     @SuppressLint("DiscouragedApi")
     private final static int TEXT_TOAST_LAYOUT = androidResources.getIdentifier("transient_notification", "layout", "android");
-    @SuppressLint("DiscouragedApi")
-    private final static int TEXT_TOAST_LAYOUT_WITH_ICON = androidResources.getIdentifier("transient_notification_with_icon", "layout", "android");
 
     @SuppressLint("DiscouragedApi")
     private final static int ID_MESSAGE = androidResources.getIdentifier("message", "id", "android");
 
     @SuppressLint("DiscouragedApi")
-    private final static int ID_ICON = androidResources.getIdentifier("icon", "id", "android");
-
-    @SuppressLint("DiscouragedApi")
-    private final static int ID_TOAST_FRAME_BACKGROUND = androidResources.getIdentifier("toast_frame_background", "attr", "android");
+    private final static int ID_TOAST_FRAME_BACKGROUND = androidResources.getIdentifier("toast_frame", "drawable", "android");
 
     @SuppressLint("DiscouragedApi")
     private final static int ID_TOAST_ELEVATION = androidResources.getIdentifier("toast_elevation", "dimen", "android");
 
     @SuppressLint("DiscouragedApi")
-    private final static int ID_TEXT_APPEARANCE_TOAST = androidResources.getIdentifier("TextAppearance.Toast", "attr", "android");
+    private final static int ID_TEXT_APPEARANCE_TOAST = androidResources.getIdentifier("TextAppearance.Toast", "style", "android");
 
     public static View getTextToastView(Context context, CharSequence text) {
-        try {
-            View view = LayoutInflater.from(context).inflate(TEXT_TOAST_LAYOUT, null);
-            TextView textView = view.findViewById(ID_MESSAGE);
-            textView.setMaxLines(Integer.MAX_VALUE);
-            if (text != null) {
-                textView.setText(text);
+        if (TEXT_TOAST_LAYOUT != 0) {
+            try {
+                View view = LayoutInflater.from(context).inflate(TEXT_TOAST_LAYOUT, null);
+                TextView textView = view.findViewById(ID_MESSAGE);
+                textView.setMaxLines(Integer.MAX_VALUE);
+                if (text != null) {
+                    textView.setText(text);
+                    return view;
+                }
+            } catch (InflateException ignored) {
             }
-            return view;
-        } catch (InflateException ignored) {
-            return inflateTextToastView(context, text);
         }
+        return inflateTextToastView(context, text);
     }
 
     public static View inflateTextToastView(Context context, CharSequence text) {
@@ -402,13 +399,16 @@ public class NexToast {
         context.getTheme().resolveAttribute(android.R.attr.colorBackground, colorBackground, true);
         layout.setBackgroundColor(colorBackground.data);
 
-        if (Build.VERSION.SDK_INT == 31 || Build.VERSION.SDK_INT == 32) {
-            if (ID_TOAST_FRAME_BACKGROUND != 0) {
-                layout.setBackgroundResource(ID_TOAST_FRAME_BACKGROUND);
+        if (ID_TOAST_FRAME_BACKGROUND != 0) {
+            layout.setBackgroundResource(ID_TOAST_FRAME_BACKGROUND);
+        }
+
+        if (Build.VERSION.SDK_INT >= 21 && ID_TOAST_ELEVATION != 0) {
+            try {
+                layout.setElevation(androidResources.getDimension(ID_TOAST_ELEVATION));
+            } catch (Resources.NotFoundException ignored) {
             }
         }
-        if (Build.VERSION.SDK_INT >= 21 && ID_TOAST_ELEVATION == 0)
-            layout.setElevation(androidResources.getDimension(ID_TOAST_ELEVATION));
 
         if (Build.VERSION.SDK_INT >= 17) {
             layoutParams.setMarginStart(dpValue16);
@@ -425,8 +425,8 @@ public class NexToast {
         textView.setEllipsize(TextUtils.TruncateAt.END);
         textView.setPadding(0, dpValue12, 0, dpValue12);
 
-        if (ID_TEXT_APPEARANCE_TOAST != 0) {
-            textView.setTextAppearance(context, ID_TEXT_APPEARANCE_TOAST);
+        if (Build.VERSION.SDK_INT >= 23 && ID_TEXT_APPEARANCE_TOAST != 0) {
+            textView.setTextAppearance(ID_TEXT_APPEARANCE_TOAST);
         } else {
             textView.setTextColor(Color.WHITE);
         }
