@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
@@ -88,6 +89,11 @@ public class NexToast {
     private NexToast(Context context, Toast toast) {
         this.toast = toast;
         this.context = context;
+    }
+
+    private NexToast(Context context, Toast toast, View view) {
+        this(context, toast);
+        setView(view);
     }
 
     /**
@@ -299,11 +305,10 @@ public class NexToast {
      *                 {@link #LENGTH_LONG}
      *
      */
-    @SuppressWarnings("deprecation")
     public static NexToast makeText(Context context, CharSequence text, int duration) {
         Toast toast = Toast.makeText(context, text, duration);
         if (hasSystemLimit) {
-            toast.setView(getTextToastView(context, text));
+            return new NexToast(context, toast, getTextToastView(context, text));
         }
         return new NexToast(context, toast);
     }
@@ -371,12 +376,18 @@ public class NexToast {
         if (TEXT_TOAST_LAYOUT != 0) {
             try {
                 View view = LayoutInflater.from(context).inflate(TEXT_TOAST_LAYOUT, null);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Drawable drawable = androidResources.getDrawable(ID_TOAST_FRAME_BACKGROUND, context.getTheme());
+                    if (drawable != null) {
+                        view.setBackground(drawable);
+                    }
+                }
                 TextView textView = view.findViewById(ID_MESSAGE);
                 textView.setMaxLines(Integer.MAX_VALUE);
                 if (text != null) {
                     textView.setText(text);
-                    return view;
                 }
+                return view;
             } catch (InflateException ignored) {
             }
         }
@@ -399,20 +410,23 @@ public class NexToast {
         context.getTheme().resolveAttribute(android.R.attr.colorBackground, colorBackground, true);
         layout.setBackgroundColor(colorBackground.data);
 
-        if (ID_TOAST_FRAME_BACKGROUND != 0) {
-            layout.setBackgroundResource(ID_TOAST_FRAME_BACKGROUND);
-        }
-
-        if (Build.VERSION.SDK_INT >= 21 && ID_TOAST_ELEVATION != 0) {
-            try {
-                layout.setElevation(androidResources.getDimension(ID_TOAST_ELEVATION));
-            } catch (Resources.NotFoundException ignored) {
-            }
-        }
-
         if (Build.VERSION.SDK_INT >= 17) {
             layoutParams.setMarginStart(dpValue16);
             layoutParams.setMarginEnd(dpValue16);
+            if (Build.VERSION.SDK_INT >= 21) {
+                if (ID_TOAST_FRAME_BACKGROUND != 0) {
+                    Drawable drawable = androidResources.getDrawable(ID_TOAST_FRAME_BACKGROUND, context.getTheme());
+                    if (drawable != null) {
+                        layout.setBackground(drawable);
+                    }
+                }
+                if (ID_TOAST_ELEVATION != 0) {
+                    try {
+                        layout.setElevation(androidResources.getDimension(ID_TOAST_ELEVATION));
+                    } catch (Resources.NotFoundException ignored) {
+                    }
+                }
+            }
         }
         layout.setLayoutParams(layoutParams);
 
@@ -425,10 +439,8 @@ public class NexToast {
         textView.setEllipsize(TextUtils.TruncateAt.END);
         textView.setPadding(0, dpValue12, 0, dpValue12);
 
-        if (Build.VERSION.SDK_INT >= 23 && ID_TEXT_APPEARANCE_TOAST != 0) {
+        if (ID_TEXT_APPEARANCE_TOAST != 0 && Build.VERSION.SDK_INT >= 23) {
             textView.setTextAppearance(ID_TEXT_APPEARANCE_TOAST);
-        } else {
-            textView.setTextColor(Color.WHITE);
         }
 
         if (text != null) {
