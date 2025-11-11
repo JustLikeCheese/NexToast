@@ -5,11 +5,9 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.InflateException;
@@ -439,7 +437,7 @@ public class NexToast {
         textView.setEllipsize(TextUtils.TruncateAt.END);
         textView.setPadding(0, dpValue12, 0, dpValue12);
 
-        if (ID_TEXT_APPEARANCE_TOAST != 0 && Build.VERSION.SDK_INT >= 23) {
+        if (Build.VERSION.SDK_INT >= 23 && ID_TEXT_APPEARANCE_TOAST != 0) {
             textView.setTextAppearance(ID_TEXT_APPEARANCE_TOAST);
         }
 
