@@ -15,16 +15,45 @@
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/btn1"
+        android:id="@+id/nextoast1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_me" />
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/nextoast2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_me" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="NexToast: "
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/nextoast3_custom_text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Colorful Text"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/nextoast4_custom_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom Layout"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/nextoast5_custom_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom Text Size"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,13 +64,13 @@
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/btn3"
+        android:id="@+id/toast1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_me" />
 
     <Button
-        android:id="@+id/btn4"
+        android:id="@+id/toast2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_me" />
