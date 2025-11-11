@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import io.github.justlikecheese.nextoast.NexToast;
 
+@SuppressWarnings("Convert2Lambda")
 public class TestActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
