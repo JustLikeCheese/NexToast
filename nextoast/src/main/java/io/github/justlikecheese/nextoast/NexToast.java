@@ -119,6 +119,15 @@ public class NexToast {
     }
 
     /**
+     * Set the default view to show.
+     *
+     * @see #getView
+     */
+    public void setView() {
+        setView(getTextToastView(context, null));
+    }
+
+    /**
      * Return the view.
      *
      * <p>Toasts constructed with {@link #NexToast(Context)} that haven't called {@link #setView(View)}
@@ -288,7 +297,7 @@ public class NexToast {
     public static NexToast makeText(Context context, CharSequence text, int duration) {
         Toast toast = Toast.makeText(context, text, duration);
         if (hasSystemLimit) {
-            toast.setView(inflateTextToastView(context, text));
+            toast.setView(getTextToastView(context, text));
         }
         return new NexToast(context, toast);
     }
@@ -357,18 +366,20 @@ public class NexToast {
     @SuppressLint("DiscouragedApi")
     private final static int ID_TEXT_APPEARANCE_TOAST = androidResources.getIdentifier("TextAppearance.Toast", "attr", "android");
 
-    public static View inflateTextToastView(Context context, CharSequence text) {
+    public static View getTextToastView(Context context, CharSequence text) {
         try {
             View view = LayoutInflater.from(context).inflate(TEXT_TOAST_LAYOUT, null);
             TextView textView = view.findViewById(ID_MESSAGE);
-            textView.setText(text);
+            if (text != null) {
+                textView.setText(text);
+            }
             return view;
         } catch (InflateException ignored) {
             return inflateTextToastView(context, text);
         }
     }
 
-    public static View getTextToastView(Context context, CharSequence text) {
+    public static View inflateTextToastView(Context context, CharSequence text) {
         int dpValue16 = dp2px(context, 16);
         int dpValue12 = dp2px(context, 12);
 
