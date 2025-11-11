@@ -18,7 +18,7 @@ NexToast 是一个简单的库用于移除于 Android 12 添加的图标和文�
 
 ```gradle
 dependencies {
-    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.0'
+    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.1'
 }
 ```
 
@@ -39,8 +39,11 @@ NexToast.makeText(this, "Hello World!", Toast.LENGTH_SHORT).show();
 ## 截图
 
 <div style="overflow: hidden">
-<img src="preview/image1.png" alt="GeneralAppearance" width="40%" align="bottom" />
-<img src="preview/image2.png" alt="ProblemIndicator" width="40%" align="bottom" />
+<img src="preview/image1.png" alt="Preview1" width="30%" align="bottom" />
+<img src="preview/image2.png" alt="Preview2" width="30%" align="bottom" />
+<img src="preview/image3.png" alt="Preview3" width="30%" align="bottom" />
+<img src="preview/image4.png" alt="Preview4" width="30%" align="bottom" />
+<img src="preview/image5.png" alt="Preview5" width="30%" align="bottom" />
 </div>
 
 ## 特色 API
@@ -55,14 +58,6 @@ NexToast 增加了一些有用的 API。
 NexToast toast = NexToast.makeText(this, "Hello World!", Toast.LENGTH_SHORT);
 toast.getTextView().setTextColor(0xFF555555); // 更改 Toast 文本颜色
 toast.show();
-```
-
-### NexToast makeText(Context context, int resId, int duration)
-
-使用字符串资源 ID 创建 NexToast。
-
-```java
-NexToast.makeText(this, R.string.hello_world, Toast.LENGTH_SHORT).show();
 ```
 
 ## 贡献

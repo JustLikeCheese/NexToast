@@ -18,7 +18,7 @@ This is a simple library to bypass the icon and two-line text limitations added 
 
 ```gradle
 dependencies {
-    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.0'
+    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.1'
 }
 ```
 
@@ -39,8 +39,11 @@ NexToast.makeText(this, "Hello World!", Toast.LENGTH_SHORT).show();
 ## Screenshots
 
 <div style="overflow: hidden">
-<img src="preview/image1.png" alt="GeneralAppearance" width="40%" align="bottom" />
-<img src="preview/image2.png" alt="ProblemIndicator" width="40%" align="bottom" />
+<img src="preview/image1.png" alt="Preview1" width="30%" align="bottom" />
+<img src="preview/image2.png" alt="Preview2" width="30%" align="bottom" />
+<img src="preview/image3.png" alt="Preview3" width="30%" align="bottom" />
+<img src="preview/image4.png" alt="Preview4" width="30%" align="bottom" />
+<img src="preview/image5.png" alt="Preview5" width="30%" align="bottom" />
 </div>
 
 ## Feature API
@@ -55,14 +58,6 @@ Returns the TextView of the Toast.
 NexToast toast = NexToast.makeText(this, "Hello World!", Toast.LENGTH_SHORT);
 toast.getTextView().setTextColor(0xFF555555); // Change text color
 toast.show();
-```
-
-### NexToast makeText(Context context, int resId, int duration)
-
-Create NexToast with text from a resource.
-
-```java
-NexToast.makeText(this, R.string.hello_world, Toast.LENGTH_SHORT).show();
 ```
 
 ## Comtribution
