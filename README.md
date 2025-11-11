@@ -18,7 +18,7 @@ This is a simple library to bypass the icon and two-line text limitations added 
 
 ```gradle
 dependencies {
-    implementation 'io.github.justlikecheese.nextoast:NexToast:1.1.0'
+    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.0'
 }
 ```
 
