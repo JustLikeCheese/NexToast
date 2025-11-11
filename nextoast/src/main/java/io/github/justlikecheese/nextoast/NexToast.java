@@ -1,6 +1,7 @@
 package io.github.justlikecheese.nextoast;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -67,6 +68,7 @@ public class NexToast {
      */
     public static final int LENGTH_LONG = 1;
 
+    @SuppressLint("AnnotateVersionCheck")
     public final static boolean hasSystemLimit = Build.VERSION.SDK_INT >= 30;
     private final Context context;
     private final Toast toast;
@@ -273,6 +275,8 @@ public class NexToast {
      *
      * @see #removeCallback(Toast.Callback)
      */
+    @SuppressLint("UseRequiresApi")
+    @TargetApi(Build.VERSION_CODES.R)
     public void addCallback(Toast.Callback callback) {
         toast.addCallback(callback);
     }
@@ -280,6 +284,8 @@ public class NexToast {
     /**
      * Removes a callback previously added with {@link #addCallback(Toast.Callback)}.
      */
+    @SuppressLint("UseRequiresApi")
+    @TargetApi(Build.VERSION_CODES.R)
     public void removeCallback(Toast.Callback callback) {
         toast.removeCallback(callback);
     }
@@ -370,6 +376,7 @@ public class NexToast {
         try {
             View view = LayoutInflater.from(context).inflate(TEXT_TOAST_LAYOUT, null);
             TextView textView = view.findViewById(ID_MESSAGE);
+            textView.setMaxLines(Integer.MAX_VALUE);
             if (text != null) {
                 textView.setText(text);
             }
