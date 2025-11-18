@@ -39,11 +39,11 @@ NexToast.makeText(this, "Hello World!", Toast.LENGTH_SHORT).show();
 ## 截图
 
 <div style="overflow: hidden">
-<img src="preview/image1.png" alt="Preview1" width="30%" align="bottom" />
-<img src="preview/image2.png" alt="Preview2" width="30%" align="bottom" />
-<img src="preview/image3.png" alt="Preview3" width="30%" align="bottom" />
-<img src="preview/image4.png" alt="Preview4" width="30%" align="bottom" />
-<img src="preview/image5.png" alt="Preview5" width="30%" align="bottom" />
+<img src="docs/public/preview/image1.png" alt="Preview1" width="30%" align="bottom" />
+<img src="docs/public/preview/image2.png" alt="Preview2" width="30%" align="bottom" />
+<img src="docs/public/preview/image3.png" alt="Preview3" width="30%" align="bottom" />
+<img src="docs/public/preview/image4.png" alt="Preview4" width="30%" align="bottom" />
+<img src="docs/public/preview/image5.png" alt="Preview5" width="30%" align="bottom" />
 </div>
 
 ## 特色 API
