@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /#usage
+      link: /#Introduction
     - theme: brand
       text: Preview
       link: /#preview
@@ -24,6 +24,9 @@ features:
   - title: Native Toast
     details: NexToast is fully compatible with native Toast, with identical UI and animation effects.
 ---
+
+## Introduction
+In Android 12, Google added limitations to Toast, restricting it to an icon and two lines of text. Google hoped that we would use Snackbar to replace Toast. However, the original Toast was obviously lighter and more convenient than Snackbar. Thus, NexToast was born. It removes the icon and two-line text restrictions of the original Toast, extends Toast's methods, and its display effect and usage are consistent with the original Toast.
 
 ## Usage
 

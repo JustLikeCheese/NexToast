@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /zh/#在项目中使用
+      link: /zh/#介绍
     - theme: brand
       text: 效果预览
       link: /zh/#效果预览
@@ -24,6 +24,10 @@ features:
   - title: 原生 Toast
     details: NexToast 完全兼容原生 Toast，并且 Toast UI 和动画效果都与原生 Toast 完全一致。
 ---
+
+## 介绍
+
+谷歌在安卓 12 为 Toast 添加了图标和两行文本的限制。咕咕咕希望我们使用 Snackbar 替代 Toast。但是原来的 Toast 明显比 Snackbar 更加轻量和方便。于是 NexToast 就诞生了，移除了原版 Toast 的图标和两行文本限制，扩展了 Toast 的方法，并且显示的效果和用法与原版 Toast 一致。
 
 ## 在项目中使用
 
