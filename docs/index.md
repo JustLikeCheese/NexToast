@@ -33,7 +33,7 @@ In Android 12, Google added limitations to Toast, restricting it to an icon and 
 Add the following to your `build.gradle`:
 ```groovy
 dependencies {
-    implementation 'com.github.JustLikeCheese:NexToast:1.2.1'
+    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.1'
 }
 ```
 
