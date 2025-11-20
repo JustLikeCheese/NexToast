@@ -35,7 +35,7 @@ features:
 
 ```groovy
 dependencies {
-    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.1'
+    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.2'
 }
 ```
 
