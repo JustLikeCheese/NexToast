@@ -55,6 +55,13 @@
         android:text="Custom Text Size"
         tools:ignore="HardcodedText" />
 
+    <Button
+        android:id="@+id/nextoast6_before_oncreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toast before onCreate"
+        tools:ignore="HardcodedText" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

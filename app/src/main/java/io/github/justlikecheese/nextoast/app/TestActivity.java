@@ -29,6 +29,7 @@ public class TestActivity extends Activity {
         Button nextoast3_custom_text_color = findViewById(R.id.nextoast3_custom_text_color);
         Button nextoast4_custom_layout = findViewById(R.id.nextoast4_custom_layout);
         Button nextoast5_custom_text = findViewById(R.id.nextoast5_custom_text);
+        Button nextoast6_before_oncreate = findViewById(R.id.nextoast6_before_oncreate);
         Button toast1 = findViewById(R.id.toast1);
         Button toast2 = findViewById(R.id.toast2);
         final String string1 = "Talk is cheap. Show me the code.\n-- Linus Torvalds";
@@ -76,6 +77,13 @@ public class TestActivity extends Activity {
                 toast.setText(toColorfulSpannable("Welcome to use NexToast!"));
                 toast.getTextView().setTextSize(64);
                 toast.show();
+            }
+        });
+        nextoast6_before_oncreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TestActivity.this, TestActivity2.class);
+                startActivity(intent);
             }
         });
         toast1.setOnClickListener(new View.OnClickListener() {
