@@ -18,7 +18,7 @@ NexToast 是一个简单的库用于移除于 Android 12 添加的图标和文�
 
 ```gradle
 dependencies {
-    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.1'
+    implementation 'io.github.justlikecheese.nextoast:NexToast:1.2.2'
 }
 ```
 
