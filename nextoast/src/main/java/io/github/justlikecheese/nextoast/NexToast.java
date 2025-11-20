@@ -10,7 +10,6 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -375,9 +374,11 @@ public class NexToast {
             try {
                 View view = LayoutInflater.from(context).inflate(TEXT_TOAST_LAYOUT, null);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    Drawable drawable = androidResources.getDrawable(ID_TOAST_FRAME_BACKGROUND, context.getTheme());
-                    if (drawable != null) {
-                        view.setBackground(drawable);
+                    if (view.getBackground() != null) {
+                        Drawable drawable = androidResources.getDrawable(ID_TOAST_FRAME_BACKGROUND, context.getTheme());
+                        if (drawable != null) {
+                            view.setBackground(drawable);
+                        }
                     }
                 }
                 TextView textView = view.findViewById(ID_MESSAGE);
@@ -386,7 +387,7 @@ public class NexToast {
                     textView.setText(text);
                 }
                 return view;
-            } catch (InflateException ignored) {
+            } catch (Exception ignored) {
             }
         }
         return inflateTextToastView(context, text);
